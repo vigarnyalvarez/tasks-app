@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import NoteBoard from './Components/NoteBoard/NoteBoard';
 import Header from './Components/Header-Section/Header';
+import NoteModal from './Components/Header-Section/CreateNote/NoteModal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -38,14 +39,15 @@ const [notes, setNotes] = useState(
 
 )
   const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => {
-      setShow(true);
-    }
+
+  const handleCloseModal = () => setShow(false);
+  const handleShowModal = () => setShow(true)
+
   return (
       <div className='flex flex-column items-center'>
-        <Header show={show} handleShow={handleShow} handleClose={handleClose} notes ={notes} setNotes={setNotes} />
-        <NoteBoard notes={notes} />
+        <Header handleShowModal={handleShowModal}  />
+        <NoteModal show={show} handleShow={handleShowModal} handleClose={handleCloseModal} notes={notes} setNotes={setNotes}/>
+        <NoteBoard show={show} handleShow={handleShowModal} handleClose={handleCloseModal} notes={notes} />
       </div>
   );
 }

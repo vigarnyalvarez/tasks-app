@@ -3,16 +3,17 @@ import DailyNote from "../../TaskNote/DailyNote";
 import { Formik, Form, Field, FieldArray } from 'formik';
 import Button  from 'react-bootstrap/Button'
 
+const createDate= new Date()
+const noteDraft = {
+    title: '', 
+    date: createDate.toDateString(), 
+    tasks: []
+}
+
 const CreateNote = ({onHide, notes, setNotes}) => {
-    const createDate= new Date()
-    const noteDraft = {
-        id: notes.length+1,
-        title: '', 
-        date: createDate.toDateString(), 
-        tasks: []
-    }
+    
       return (
-            <Formik initialValues={noteDraft} onSubmit={(values) => {setNotes([...notes, values]); console.log(notes)}}>
+            <Formik initialValues={noteDraft} onSubmit={(values) => {setNotes([...notes, { ...values, id: notes.length+1, }]); console.log(notes)}}>
             {({ handleSubmit, values, handleChange}) => (
                 <div className="flex justify-around">
                     <Form onSubmit={handleSubmit}>
