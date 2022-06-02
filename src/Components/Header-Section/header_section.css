@@ -1,6 +1,8 @@
 .btn-primary{
     background-color: black;
     color: yellow;
+    /* padding: .75rem;
+    border-radius: .75rem; */
 }
 
 .btn-primary:hover{

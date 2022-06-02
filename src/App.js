@@ -35,11 +35,16 @@ const [notes, setNotes] = useState(
     },
   
   ]
-)
 
+)
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => {
+      setShow(true);
+    }
   return (
       <div className='flex flex-column items-center'>
-        <Header notes ={notes} setNotes={setNotes} />
+        <Header show={show} handleShow={handleShow} handleClose={handleClose} notes ={notes} setNotes={setNotes} />
         <NoteBoard notes={notes} />
       </div>
   );
