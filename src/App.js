@@ -10,21 +10,25 @@ function App() {
 const [notes, setNotes] = useState(
   [
     {
+      id: 1,
       date: 'Thu May 26 2022',
       title: 'Test',
       tasks: ['test 1', 'test 2', 'test 3']
     },
     {
+      id: 2,
       date: 'Fri May 27 2022',
       title: 'Test',
       tasks: ['test 1', 'test 2', 'test 3']
     },
     {
+      id: 3,
       date: 'Sat May 28 2022',
       title: 'Test',
       tasks: ['test 1', 'test 2', 'test 3']
     },
     {
+      id: 4,
       date: 'Sun May 29 2022',
       title: 'Test',
       tasks: ['test 1', 'test 2', 'test 3']

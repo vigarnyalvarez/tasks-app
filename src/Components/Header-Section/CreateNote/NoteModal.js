@@ -17,11 +17,11 @@ const NoteModal = ({notes, setNotes}) => {
         <Button onClick={handleShow}>
           Create Task
         </Button>
-        <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} size="xl">
+        <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} size="lg">
           <Modal.Header closeButton>
           </Modal.Header>
           <Modal.Body>
-            <CreateNote notes = {notes} setNotes = {setNotes}/>
+            <CreateNote  onHide = {handleClose} notes = {notes} setNotes = {setNotes}/>
           </Modal.Body>
         </Modal>
       </>

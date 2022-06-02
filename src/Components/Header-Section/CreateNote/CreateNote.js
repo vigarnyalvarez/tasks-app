@@ -3,17 +3,18 @@ import DailyNote from "../../TaskNote/DailyNote";
 import { Formik, Form, Field, FieldArray } from 'formik';
 import Button  from 'react-bootstrap/Button'
 
-const CreateNote = ({notes, setNotes}) => {
+const CreateNote = ({onHide, notes, setNotes}) => {
     const createDate= new Date()
     const noteDraft = {
+        id: notes.length+1,
         title: '', 
         date: createDate.toDateString(), 
         tasks: []
     }
       return (
-            <Formik initialValues={noteDraft} onSubmit={(values) => {setNotes([...notes, values]); console.log(values)}}>
+            <Formik initialValues={noteDraft} onSubmit={(values) => {setNotes([...notes, values]); console.log(notes)}}>
             {({ handleSubmit, values, handleChange}) => (
-                <div className="flex">
+                <div className="flex justify-around">
                     <Form onSubmit={handleSubmit}>
                         <div className="flex flex-column">
                             <label htmlFor="title" className="pr3">Title</label>
@@ -25,19 +26,18 @@ const CreateNote = ({notes, setNotes}) => {
                             {({remove, push}) => (
                                 <>
                                     {values.tasks.map((task, index) => (
-                                        <>
-                                            <div className="flex justify-around">
-                                                <Field name={`tasks.${index}`} placeholder="Enter Task"/>
-                                                <Button type="button" className="secondary" variant="danger" onClick={() => remove(index)}>Remove</Button>
-                                            </div>
-                                            <br/>
-                                        </>                                       
+                                       
+                                        <div key={index} className="flex justify-around mb3">
+                                            <Field className="mr2" name={`tasks.${index}`} placeholder="Enter Task"/>
+                                            <Button type="button" className="secondary" variant="danger" onClick={() => remove(index)}>Remove</Button>
+                                        </div>
+                                     
                                     ))}
-                                    <Button type="button" className="secondary" variant="success" onClick={() => push('')}> Add Task</Button>
+                                    <Button type="button" className="secondary mr4" variant="success" onClick={() => push('')}> Add Task</Button>
                                 </>
                             )}
                         </FieldArray>
-                        <Button type="submit" className="secondary">Create Note</Button>
+                        <Button type="submit" className="secondary" onClick={onHide}>Create Note</Button>
                     </Form>
                     <DailyNote singleNote={values}/>
                 </div>
