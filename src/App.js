@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import NoteBoard from './Components/NoteBoard/NoteBoard';
 import Header from './Components/Header-Section/Header';
-import NoteModal from './Components/Header-Section/CreateNote/NoteModal';
+import NoteModal from './Components/Modals/CreateNote/CreateNoteModal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -42,6 +42,7 @@ const [notes, setNotes] = useState(
 
   const handleCloseModal = () => setShow(false);
   const handleShowModal = () => setShow(true)
+  
 
   return (
       <div className='flex flex-column items-center'>

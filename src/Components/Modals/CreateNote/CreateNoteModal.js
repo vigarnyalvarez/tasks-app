@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal'
 import CreateNote from "./CreateNote";
 
-const NoteModal = ({show, handleClose, notes, setNotes}) => {
+const CreateNoteModal = ({show, handleClose, notes, setNotes}) => {
     
     return (
         <>
@@ -11,7 +11,7 @@ const NoteModal = ({show, handleClose, notes, setNotes}) => {
             <Modal.Header closeButton>
             </Modal.Header>
             <Modal.Body>
-              <CreateNote  onHide = {handleClose} notes = {notes} setNotes = {setNotes}/>
+              <CreateNote  onHide={handleClose} notes={notes} setNotes={setNotes}/>
             </Modal.Body>
           </Modal>
         </>
@@ -19,4 +19,4 @@ const NoteModal = ({show, handleClose, notes, setNotes}) => {
     }
 
 
-  export default NoteModal;
+  export default CreateNoteModal;
