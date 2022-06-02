@@ -21,7 +21,7 @@ const CreateNote = ({onHide, notes, setNotes}) => {
                             <Field id="title" name = "title" type="text" onChange={handleChange} value={values.title}/>
                         </div>
                         <br/>
-                        <label htmlFor="task">Add a Task</label>
+                        <label htmlFor="task" className="mr2">Add a Task</label>
                         <FieldArray name="tasks" >
                             {({remove, push}) => (
                                 <>
