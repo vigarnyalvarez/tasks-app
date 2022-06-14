@@ -42,6 +42,10 @@ const [notes, setNotes] = useState(
 
   const handleCloseNoteModal = () => setShow(false);
   const handleShowNoteModal = () => setShow(true)
+
+  
+
+  
   
 
   return (
