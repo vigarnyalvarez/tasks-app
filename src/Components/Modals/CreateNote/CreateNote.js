@@ -13,7 +13,7 @@ const noteDraft = {
 const CreateNote = ({onHide, notes, setNotes}) => {
     
       return (
-            <Formik initialValues={noteDraft} onSubmit={(values) => {setNotes([...notes, { ...values, id: notes.length+1, }]); console.log(notes)}}>
+            <Formik initialValues={noteDraft} onSubmit={(values) => {setNotes([...notes, { id: notes.length+1,...values, }]); console.log(notes)}}>
             {({ handleSubmit, values, handleChange}) => (
                 <div className="flex justify-around">
                     <Form onSubmit={handleSubmit}>

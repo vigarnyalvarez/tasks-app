@@ -1,9 +1,9 @@
 import React, {setState} from "react";
 import DailyNote from "../TaskNote/DailyNote";
 
-const NoteBoard = ({notes}) => {
+const NoteBoard = ({notes, displayEditableNote}) => {
     
-    const displayEditableNote = (id) => {console.log(notes[id-1])}
+    
     
     return (
         <div className="flex flex-wrap justify-around b--solid pa4 ma2">

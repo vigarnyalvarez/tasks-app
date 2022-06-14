@@ -40,11 +40,17 @@ const [notes, setNotes] = useState(
 )
   const [show, setShow] = useState(false);
 
+  //editableModal State
+  const [showEditable, setShowEditable] = useState(false);
+
+  //state updates for creation Modal
   const handleCloseNoteModal = () => setShow(false);
-  const handleShowNoteModal = () => setShow(true)
+  const handleShowNoteModal = () => setShow(true);
 
-  
-
+  //state update for modification modal + display of the note to be editted
+  const handleCloseEditNoteModal = () => setShowEditable(false);
+  const handleShowEditNoteModal = (id) => setShowEditable(true);
+  const DISPLAY_EDITABLE_NOTE = (id) => console.log(notes[id-1])
   
   
 
