@@ -10,7 +10,7 @@ const UpdateNoteModal = ({show, handleClose, notes, setNotes, value}) => {
         <Modal.Header closeButton>
         </Modal.Header>
         <Modal.Body>
-          <DailyNote singleNote={value}/>
+           <DailyNote singleNote={value}/> 
         </Modal.Body>
       </Modal>
   </>
