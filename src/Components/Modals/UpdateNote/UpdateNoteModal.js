@@ -1,16 +1,16 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal';
-import DailyNote from "../../TaskNote/DailyNote";
+import UpdateNote from "./UpdateNote";
 
-const UpdateNoteModal = ({show, handleClose, notes, setNotes, value}) => {
+const UpdateNoteModal = ({show, handleClose, notes, setNotes}) => {
   return (
     <>
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} size="lg">
         <Modal.Header closeButton>
         </Modal.Header>
         <Modal.Body>
-           <DailyNote singleNote={value}/> 
+           <UpdateNote notes={notes} setNotes={setNotes} onHide={handleClose}/>  
         </Modal.Body>
       </Modal>
   </>

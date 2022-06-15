@@ -62,7 +62,7 @@ const [notes, setNotes] = useState(
       <div className='flex flex-column items-center'>
         <Header handleShowNoteModal={handleShowNoteModal}  />
         <NoteModal show={show} handleShowNoteModal={handleShowNoteModal} handleCloseNoteModal={handleCloseNoteModal} notes={notes} setNotes={setNotes}/>
-        <UpdateNoteModal show={showEditable} handleClose={HANDLE_CLOSE_EDIT_NOTEMODAL} value={notes[noteId]}/>
+        <UpdateNoteModal show={showEditable} handleClose={HANDLE_CLOSE_EDIT_NOTEMODAL} notes={notes[noteId]}/>
         <NoteBoard notes={notes} showEditModal={HANDLE_SHOW_EDIT_NOTEMODAL} />
       </div>
   );
