@@ -3,14 +3,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Modal from 'react-bootstrap/Modal';
 import UpdateNote from "./UpdateNote";
 
-const UpdateNoteModal = ({ show, handleClose, notes, setNotes, modifyAction, modifyFunc }) => {
+const UpdateNoteModal = ({ show, handleClose, notes, setNotes, modifyAction, modifyFunc, deleteFunc }) => {
   return (
     <>
       <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false} size="lg">
         <Modal.Header closeButton>
         </Modal.Header>
         <Modal.Body>
-          <UpdateNote notes={notes} setNotes={setNotes} onHide={handleClose} modifyAction={modifyAction} modifyFunc={modifyFunc} /> 
+          <UpdateNote notes={notes} setNotes={setNotes} onHide={handleClose} modifyAction={modifyAction} modifyFunc={modifyFunc} deleteFunc={deleteFunc}/> 
         </Modal.Body>
       </Modal>
   </>

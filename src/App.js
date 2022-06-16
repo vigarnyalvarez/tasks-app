@@ -44,7 +44,7 @@ const [notes, setNotes] = useState(
   //editableModal State
   const [showEditable, setShowEditable] = useState(false);
 
-  //state that copies note to be modified on HANDLE_SHOW_EDIT_NOTEMODAL
+  //state that copies note to be modified on handleShowEditNoteModalL
   const [displayNote, setDisplayNote] = useState({});
 
   //state and updates for creation Modal
@@ -61,35 +61,47 @@ const [notes, setNotes] = useState(
   const [modifyAction, setModifyAction] = useState(false);
 
   //state update for modification modal + display of the note to be editted
-  const HANDLE_CLOSE_EDIT_NOTEMODAL = () => {
+  const handleCloseEditNoteModal = () => {
     setShowEditable(false);
-    setModifyAction(false)
+    setModifyAction(false);
   }
 
-  const HANDLE_SHOW_EDIT_NOTEMODAL = (id) => {
+  const handleShowEditNoteModal = (id) => {
     setShowEditable(true);
     setModifyAction(true)
     setDisplayNote(notes.find( note => note.id === id ))
   }
-
+  
+  /**
+   * Function to edit existing note. It copies the notes array, modifies using a splice and the index found
+   * and uses notes setState to modify the whole notes state.
+   */
   const editNote = (values) => {
-    let editableArray = [...notes]
-    let index = editableArray.findIndex(note => note.id === values.id)
-    editableArray.splice(index, 1, values)
+    let editableArray = [...notes];
+    let index = editableArray.findIndex(note => note.id === values.id);
+    editableArray.splice(index, 1, values);
     setNotes(editableArray);
-    console.log(editableArray)
+    console.log(editableArray);
   }
 
-  
-  
-  
+  const deleteNote = (id) => {
+    let editableArray = [...notes];
+    const index = editableArray.findIndex(note => note.id === id);
+    console.log(index)
+    if(index || index === 0){
+      editableArray.splice(index, 1);
+      setNotes(editableArray);
+      console.log(editableArray);
+      handleCloseEditNoteModal();
+    }
+  }
 
   return (
       <div className='flex flex-column items-center'>
         <Header handleShowNoteModal={handleShowNoteModal}  />
         <NoteModal show={show} handleShowNoteModal={handleShowNoteModal} handleCloseNoteModal={handleCloseNoteModal} notes={notes} setNotes={setNotes} modifyAction={modifyAction}/>
-        <UpdateNoteModal show={showEditable} handleClose={HANDLE_CLOSE_EDIT_NOTEMODAL} notes={displayNote} modifyAction={modifyAction} modifyFunc={editNote}/>
-        <NoteBoard notes={notes} showEditModal={HANDLE_SHOW_EDIT_NOTEMODAL} />
+        <UpdateNoteModal show={showEditable} handleClose={handleCloseEditNoteModal} notes={displayNote} modifyAction={modifyAction} modifyFunc={editNote} deleteFunc={deleteNote}/>
+        <NoteBoard notes={notes} showEditModal={handleShowEditNoteModal} />
       </div>
   );
 }
