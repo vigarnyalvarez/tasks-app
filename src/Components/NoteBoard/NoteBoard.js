@@ -7,7 +7,7 @@ const NoteBoard = ({notes, showEditModal}) => {
     
     return (
         <div className="flex flex-wrap justify-around b--solid pa4 ma2">
-            {notes.map ((item, index) =>  <DailyNote  key={index} singleNote={item} displayEditableNote={showEditModal} />)}
+            {notes.map ((item, index) =>  <DailyNote  key={index} storedId={index} singleNote={item} displayEditableNote={showEditModal} />)}
         </div>
     )
 }

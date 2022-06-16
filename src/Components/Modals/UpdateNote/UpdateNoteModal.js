@@ -10,7 +10,7 @@ const UpdateNoteModal = ({show, handleClose, notes, setNotes}) => {
         <Modal.Header closeButton>
         </Modal.Header>
         <Modal.Body>
-           <UpdateNote notes={notes} setNotes={setNotes} onHide={handleClose}/>  
+          <UpdateNote notes={notes} setNotes={setNotes} onHide={handleClose}/> 
         </Modal.Body>
       </Modal>
   </>

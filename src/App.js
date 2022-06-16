@@ -39,13 +39,15 @@ const [notes, setNotes] = useState(
   ]
 
 )
-  const [show, setShow] = useState(false);
+
 
   //editableModal State
   const [showEditable, setShowEditable] = useState(false);
-  //id state variable to display note
-  const [noteId, setNoteId] = useState(0)
-  //state updates for creation Modal
+  //state that copies note to be modified on HANDLE_SHOW_EDIT_NOTEMODAL
+  const [editableNote, setEditableNote] = useState({});
+
+  //state and updates for creation Modal
+  const [show, setShow] = useState(false);
   const handleCloseNoteModal = () => setShow(false);
   const handleShowNoteModal = () => setShow(true);
 
@@ -53,8 +55,10 @@ const [notes, setNotes] = useState(
   const HANDLE_CLOSE_EDIT_NOTEMODAL = () => setShowEditable(false);
   const HANDLE_SHOW_EDIT_NOTEMODAL = (id) => {
     setShowEditable(true);
-    setNoteId(id-1)
+    setEditableNote(notes.find(note => note.id === id))
   }
+
+  
   
   
 
@@ -62,7 +66,7 @@ const [notes, setNotes] = useState(
       <div className='flex flex-column items-center'>
         <Header handleShowNoteModal={handleShowNoteModal}  />
         <NoteModal show={show} handleShowNoteModal={handleShowNoteModal} handleCloseNoteModal={handleCloseNoteModal} notes={notes} setNotes={setNotes}/>
-        <UpdateNoteModal show={showEditable} handleClose={HANDLE_CLOSE_EDIT_NOTEMODAL} notes={notes[noteId]}/>
+        <UpdateNoteModal show={showEditable} handleClose={HANDLE_CLOSE_EDIT_NOTEMODAL} notes={editableNote}/>
         <NoteBoard notes={notes} showEditModal={HANDLE_SHOW_EDIT_NOTEMODAL} />
       </div>
   );
