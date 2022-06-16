@@ -10,7 +10,7 @@ const noteDraft = {
     tasks: []
 }
 
-const CreateNote = ({onHide, notes, setNotes}) => {
+const CreateNote = ({onHide, notes, setNotes, modifyAction}) => {
     
       return (
             <Formik initialValues={noteDraft} onSubmit={(values) => {setNotes([...notes, { id: notes.length+1,...values, }]); console.log(notes)}}>
@@ -40,7 +40,7 @@ const CreateNote = ({onHide, notes, setNotes}) => {
                         </FieldArray>
                         <Button type="submit" className="secondary" onClick={onHide}>Create Note</Button>
                     </Form>
-                    <DailyNote singleNote={values}/>
+                    <DailyNote singleNote={values} modifyAction={modifyAction}/>
                 </div>
             )}
             </Formik>
