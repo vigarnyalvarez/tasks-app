@@ -3,9 +3,9 @@ import DailyNote from "../../TaskNote/DailyNote";
 import { Formik, Form, Field, FieldArray } from 'formik';
 import Button  from 'react-bootstrap/Button'
 
-const UpdateNote = ({ notes, setNotes, onHide, modifyAction }) => {
+const UpdateNote = ({ notes, setNotes, onHide, modifyAction, modifyFunc }) => {
     return(
-        <Formik initialValues={notes} onSubmit={(values) => {setNotes([notes, {...values, }]); console.log(notes)}}>
+        <Formik initialValues={notes} onSubmit={(values) => modifyFunc(values)}>
         {({ handleSubmit, values, handleChange}) => (
             <div className="flex justify-around">
                 <Form onSubmit={handleSubmit}>
@@ -30,9 +30,9 @@ const UpdateNote = ({ notes, setNotes, onHide, modifyAction }) => {
                             </>
                         )}
                     </FieldArray>
-                    <Button type="submit" className="secondary" onClick={onHide}>Save Editted Note</Button>
+                    <Button type="submit" className="secondary" onClick={onHide}>Save Edited Note</Button>
                 </Form>
-                <DailyNote singleNote={notes} modifyAction={modifyAction}/>
+                <DailyNote singleNote={values} modifyAction={modifyAction}/>
             </div>
         )}
         </Formik>

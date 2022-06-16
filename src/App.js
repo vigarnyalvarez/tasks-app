@@ -43,8 +43,9 @@ const [notes, setNotes] = useState(
 
   //editableModal State
   const [showEditable, setShowEditable] = useState(false);
+
   //state that copies note to be modified on HANDLE_SHOW_EDIT_NOTEMODAL
-  const [editableNote, setEditableNote] = useState({});
+  const [displayNote, setDisplayNote] = useState({});
 
   //state and updates for creation Modal
   const [show, setShow] = useState(false);
@@ -64,10 +65,19 @@ const [notes, setNotes] = useState(
     setShowEditable(false);
     setModifyAction(false)
   }
+
   const HANDLE_SHOW_EDIT_NOTEMODAL = (id) => {
     setShowEditable(true);
     setModifyAction(true)
-    setEditableNote(notes.find(note => note.id === id))
+    setDisplayNote(notes.find( note => note.id === id ))
+  }
+
+  const editNote = (values) => {
+    let editableArray = [...notes]
+    let index = editableArray.findIndex(note => note.id === values.id)
+    editableArray.splice(index, 1, values)
+    setNotes(editableArray);
+    console.log(editableArray)
   }
 
   
@@ -78,7 +88,7 @@ const [notes, setNotes] = useState(
       <div className='flex flex-column items-center'>
         <Header handleShowNoteModal={handleShowNoteModal}  />
         <NoteModal show={show} handleShowNoteModal={handleShowNoteModal} handleCloseNoteModal={handleCloseNoteModal} notes={notes} setNotes={setNotes} modifyAction={modifyAction}/>
-        <UpdateNoteModal show={showEditable} handleClose={HANDLE_CLOSE_EDIT_NOTEMODAL} notes={editableNote} modifyAction={modifyAction}/>
+        <UpdateNoteModal show={showEditable} handleClose={HANDLE_CLOSE_EDIT_NOTEMODAL} notes={displayNote} modifyAction={modifyAction} modifyFunc={editNote}/>
         <NoteBoard notes={notes} showEditModal={HANDLE_SHOW_EDIT_NOTEMODAL} />
       </div>
   );

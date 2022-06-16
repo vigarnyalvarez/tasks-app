@@ -11,7 +11,6 @@ const noteDraft = {
 }
 
 const CreateNote = ({onHide, notes, setNotes, modifyAction}) => {
-    
       return (
             <Formik initialValues={noteDraft} onSubmit={(values) => {setNotes([...notes, { id: notes.length+1,...values, }]); console.log(notes)}}>
             {({ handleSubmit, values, handleChange}) => (
