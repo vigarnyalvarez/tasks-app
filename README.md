@@ -1,6 +1,6 @@
 # Tasks-App
 
-This project is made with React and, eventually will have a back end using Node and express. 
+This project is made with React and, eventually will have a back end using Apollo-GraphQL. 
 
 #On the making
 
